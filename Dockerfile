@@ -32,7 +32,8 @@ RUN apt-get update && apt-get install -y \
     libgmp-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-    libpng-dev
+    libpng-dev \
+    nodejs
 
 RUN apt-get install -y libmagickwand-dev --no-install-recommends
 
@@ -63,7 +64,7 @@ RUN docker-php-ext-install -j$(nproc) \
 
 COPY ./scripts ./scripts
 
-RUN ./scripts/nvm.sh
+#RUN ./scripts/nvm.sh
 RUN ./scripts/composer.sh
 
 # Install Vapor + Prestissimo (parallel/quicker composer install)
@@ -71,10 +72,6 @@ RUN set -xe && \
     composer global require hirak/prestissimo && \
     composer global require laravel/vapor-cli && \
     composer clear-cache
-
-# Install Node.js (needed for Vapor's NPM Build)
-RUN nvm install node
-RUN nvm install-latest-npm
 
 # Prepare out Entrypoint (used to run Vapor commands)
 COPY vapor-entrypoint /usr/local/bin/vapor-entrypoint
