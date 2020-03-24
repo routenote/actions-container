@@ -8,5 +8,5 @@ if [ -z ${VAPOR_API_TOKEN} ]; then
     exit 1
 fi
 
-php ~/.composer/vendor/bin/vapor "$@" -vvv
+php vapor "$@" -vvv
 exit $?
