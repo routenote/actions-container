@@ -4,3 +4,5 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+source ~/.nvm/nvm.sh
