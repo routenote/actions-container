@@ -1,0 +1,9 @@
+name: 'Laravel Vapor PHP 7.4'
+description: 'Run Laravel Vapor commands directly from Github Actions (on PHP 7.4)'
+author: 'RouteNote'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
