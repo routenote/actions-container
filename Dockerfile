@@ -61,10 +61,9 @@ RUN docker-php-ext-install -j$(nproc) \
     intl \
     gd
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
-
 COPY ./scripts ./scripts
 
+RUN ./scripts/nvm.sh
 RUN ./scripts/composer.sh
 
 # Install Vapor + Prestissimo (parallel/quicker composer install)
@@ -74,7 +73,8 @@ RUN set -xe && \
     composer clear-cache
 
 # Install Node.js (needed for Vapor's NPM Build)
-RUN apk add --update nodejs npm
+RUN nvm install node
+RUN nvm install-latest-npm
 
 # Prepare out Entrypoint (used to run Vapor commands)
 COPY vapor-entrypoint /usr/local/bin/vapor-entrypoint
