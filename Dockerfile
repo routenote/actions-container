@@ -74,6 +74,6 @@ RUN set -xe && \
     composer clear-cache
 
 # Prepare out Entrypoint (used to run Vapor commands)
-COPY vapor-entrypoint /usr/local/bin/vapor-entrypoint
+COPY vapor-entrypoint /root/vapor-entrypoint
 
-ENTRYPOINT ["/usr/local/bin/vapor-entrypoint"]
+ENTRYPOINT ["/root/vapor-entrypoint"]
